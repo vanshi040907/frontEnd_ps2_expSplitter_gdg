@@ -268,20 +268,24 @@ btn[9].addEventListener('click', ()=>{
 let k=0;  
 //creating a new array by adding using this button
 btn[10].addEventListener('click', ()=>{
-    names[k]=placeholder[8].value;
+   if(k<number){
+     names[k]=placeholder[8].value;
     placeholder[8].value="";
     k++;
+   }
 });
 
-//creating a checklist from the new array generated
+//creating a checklist from the new array generated //confirm button
 btn[11].addEventListener('click', ()=>{
-   if(addToLocalStorage){
+   if(k>=number){
+    if(addToLocalStorage){
      localStorage.setItem(groupName, JSON.stringify(names));
    }
     localStorage.setItem(`${groupName}_currency`, currency);
     createChecklist();
     pages[4].style.display='none';
     pages[5].style.display='block';
+   }
 });
 
 //back button for two cases- demo and logged in 

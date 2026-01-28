@@ -215,7 +215,7 @@
 
 .heading2{
  color: white;
- font-size: 3vw;
+ font-size: 5vh;
  font-family: 'Courier New', Courier, monospace;
  font-weight: 600;
  padding-top:3vh;
@@ -437,7 +437,7 @@ th, td {
         transition: all 0.3s ease-out;
     }
     .heading2{
-        font-size: 8vw;
+        font-size: 5vh;
         margin-bottom: 0px;
         padding-top: 6vh;
     }
@@ -459,7 +459,7 @@ th, td {
 
 @media screen and (max-width:950px){
     .heading2{
-        font-size: 5vw;
+        font-size: 5vh;
     }
 }
 
