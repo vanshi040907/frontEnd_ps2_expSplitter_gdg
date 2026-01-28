@@ -22,11 +22,11 @@ The user can create and save the groups that they can access later without creat
 if the user is creating the group he/she have the right to set the currency, no. of people and also create the list for the desired no of persons.<br>
 <img width="408" height="816" alt="image" src="https://github.com/user-attachments/assets/77f7020a-9780-42ea-a0da-65e6254c4b15" />
 After creating or choosing the group user can add all the necessary bills.<br>
-![BILL ADDING](https://github.com/user-attachments/assets/9c4110a5-dbb1-4daa-8345-11a31602dd35)
+<img width="412" height="907" alt="image" src="https://github.com/user-attachments/assets/a36017de-ecf4-4b16-adaa-fd53d4c27bda" />
 After adding up the needed bills the users can see all the bills that they have paid using Complete and view bills button.</br><img width="761" height="827" alt="Screenshot 2026-01-28 215919" src="https://github.com/user-attachments/assets/a198f603-7637-43ad-b1bc-548f7ca29b4d" />
  Now, they can either view the settlements or go back to add more bills.<br><img width="461" height="830" alt="Screenshot 2026-01-28 220033" src="https://github.com/user-attachments/assets/164f6a96-8097-493e-9549-83744c65ba85" />
 Even after viewing up the settlements the user can add or delete the bill using change bills button.<br>
-<img width="440" height="824" alt="Screenshot 2026-01-28 220056" src="https://github.com/user-attachments/assets/0afbf712-0f5a-472c-9604-e8dc99dd78c8" /><img width="440" height="824" alt="Screenshot 2026-01-28 220056" src="https://github.com/user-attachments/assets/ca6824ad-409e-4968-9de1-593e4c6f0832" />
+<img width="440" height="824" alt="Screenshot 2026-01-28 220056" src="https://github.com/user-attachments/assets/0afbf712-0f5a-472c-9604-e8dc99dd78c8" />
 THANK YOU!!
 
 
