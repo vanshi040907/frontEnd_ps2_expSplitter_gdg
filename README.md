@@ -1,4 +1,4 @@
-<img width="440" height="824" alt="Screenshot 2026-01-28 220056" src="https://github.com/user-attachments/assets/e5d3e48d-b436-43c7-ba55-0708bfbd3e16" /># frontEnd_ps2_expSplitter_gdg
+<# frontEnd_ps2_expSplitter_gdg
 This project is the second problem statement for induction in the frontend webdev domain in GDG club of IIT INDORE. <br>
 It includes developing a an expense splitter that can perform the following basic functions:<br>
 1. Create a group with multiple members.<br>
@@ -26,8 +26,7 @@ After creating or choosing the group user can add all the necessary bills.<br>
 After adding up the needed bills the users can see all the bills that they have paid using Complete and view bills button.</br><img width="761" height="827" alt="Screenshot 2026-01-28 215919" src="https://github.com/user-attachments/assets/a198f603-7637-43ad-b1bc-548f7ca29b4d" />
  Now, they can either view the settlements or go back to add more bills.<br><img width="461" height="830" alt="Screenshot 2026-01-28 220033" src="https://github.com/user-attachments/assets/164f6a96-8097-493e-9549-83744c65ba85" />
 Even after viewing up the settlements the user can add or delete the bill using change bills button.<br>
-<img width="440" height="824" alt="Screenshot 2026-01-28 220056" src="https://github.com/user-attachments/assets/0afbf712-0f5a-472c-9604-e8dc99dd78c8" />
-<img width="440" height="824" alt="Screenshot 2026-01-28 220056" src="https://github.com/user-attachments/assets/ca6824ad-409e-4968-9de1-593e4c6f0832" />
+<img width="440" height="824" alt="Screenshot 2026-01-28 220056" src="https://github.com/user-attachments/assets/0afbf712-0f5a-472c-9604-e8dc99dd78c8" /><img width="440" height="824" alt="Screenshot 2026-01-28 220056" src="https://github.com/user-attachments/assets/ca6824ad-409e-4968-9de1-593e4c6f0832" />
 THANK YOU!!
 
 
