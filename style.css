@@ -181,13 +181,14 @@
 }
 
 #loginWindow{
-    height:80vh;
+    height:auto;
     width:80vw;
     max-width: 450px;
     border: 4px ridge white;
     backdrop-filter: blur(10px);
     border-radius: 5vh;
-    box-shadow: 0 0 10px #fff;   
+    box-shadow: 0 0 10px #fff; 
+    padding: 24px;  
 }
 
 #details{
@@ -219,7 +220,7 @@
  font-weight: 600;
  padding-top:3vh;
  text-align: center;
- margin-bottom: 5vh;
+ margin-bottom: 0vh;
 }
 
 .textGlow{
@@ -415,6 +416,15 @@ th, td {
   border: 1px solid white; 
   padding: 3px;
   text-align: center;
+}
+
+/* extra css for the ninth page */
+#nine{
+    background:url(assests/intro\ background\ image.jpeg);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
 }
 
 @media screen and (max-width:700px){

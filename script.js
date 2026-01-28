@@ -13,12 +13,16 @@ btn[1].addEventListener('click', ()=>{
     pages[1].style.display='none';
     pages[2].style.display='block';
 });
+let addToLocalStorage=true;
 btn[2].addEventListener('click', ()=>{
     pages[1].style.display='none';
-    pages[3].style.display='block';
+    pages[4].style.display='block';
+    let grName=document.querySelector('#grdetails');
+    grName.textContent=`Enter the details`;
+    addToLocalStorage=false;
 });
 
-//js for page number 2 part 2
+//js for page number 2 part 2  slider window 
 const left=document.querySelector('.left');
 const right=document.querySelector('.right');
 const slider=document.querySelector('.slider');
@@ -121,27 +125,43 @@ left.addEventListener('click', ()=>{
 let name;
 let userName;
 let emailId;
+let passWord;
 
-//js for page number 3 (login page)
-btn[3].addEventListener('click', ()=>{
-    if(placeholder[0].value!=="" && placeholder[1].value!=="" && placeholder[2].value!==""){
-        for(let i=0; i<3; i++){
+//js for page number 3 (login and signup page)
+//go to the login page if already have an account
+btn[3].addEventListener('click', ()=>{   
+    pages[2].style.display='none';
+    pages[8].style.display='block';
+
+});
+
+let makeGroup=document.querySelector('.createGroup');
+
+//function to create a named heading on the next page
+function personGreeting(){         
+    const createGroup=document.createElement('h1');
+    createGroup.className='whiteHead';
+    createGroup.textContent=`Hello ${userName}!`;
+    makeGroup.prepend(createGroup);  
+}
+
+//entry of all personal details while signing up
+btn[4].addEventListener('click', ()=>{   
+    if(placeholder[0].value!=="" && placeholder[1].value!=="" && placeholder[2].value!=="" && placeholder[3].value!==""){
+        for(let i=0; i<4; i++){
          placeholder[i].style.backgroundColor='transparent';
    }
     pages[2].style.display='none';
     pages[3].style.display='block';
     name=placeholder[0].value;
     userName=placeholder[1].value;
-    emailId=placeholder[2].value;
-
-    let makeGroup=document.querySelector('.createGroup');
-    const createGroup=document.createElement('h1');
-    createGroup.className='whiteHead';
-    createGroup.textContent=`Hello ${userName}!`;
-    makeGroup.prepend(createGroup);  
+    passWord=placeholder[2].value;
+    emailId=placeholder[3].value;
+    personGreeting();
+    localStorage.setItem(userName, passWord);
 }
 else{
-   for(let i=0; i<3; i++){
+   for(let i=0; i<4; i++){
     if(placeholder[i].value===""){
          placeholder[i].style.backgroundColor='#4E070799';
     }
@@ -151,50 +171,22 @@ else{
    }
 }
 });
-
-//end
-
-let groupName;
-
-//js for page number 4
-btn[4].addEventListener('click', ()=>{
-    if(placeholder[3].value!==""){
-        placeholder[3].style.backgroundColor='transparent';
-        pages[3].style.display='none';
-    pages[4].style.display='block';
-    groupName=placeholder[3].value;
-
-    let grName=document.querySelector('#grdetails');
-    grName.textContent=`Enter the details for ${groupName}`;
-    }
-    else{
-        placeholder[3].style.backgroundColor='#4E070799';
-    }
+//going to the create grp page
+btn[5].addEventListener('click', ()=> {
+    pages[2].style.display='none';
+    pages[1].style.display='block';
+    
 });
-
 //end
 
-let number;
-const bills=document.querySelector('.bill');
-let checklistDiv=document.getElementById("checklist");
+//details of the created group for both demo and logged in profiles
+let groupName ='group';
 let names=[];
-//js for grp details page number 5
+let number;
+let currency;
 
-btn[5].addEventListener('click', ()=>{
-    number=placeholder[4].value;
-});
-
-let k=0;
-btn[6].addEventListener('click', ()=>{
-    names[k]=placeholder[5].value;
-    placeholder[5].value="";
-    k++;
-});
-
-let expenses=[];
-
-btn[7].addEventListener('click', ()=>{
-
+//function to create the checklist from the array created by adding the names
+function createChecklist() {
     names.forEach((Name, index) => {
                 let label = document.createElement("label");
                 let checkbox = document.createElement("input");
@@ -206,13 +198,107 @@ btn[7].addEventListener('click', ()=>{
                 checklistDiv.appendChild(label);
                 checklistDiv.appendChild(document.createElement("br"));
             });       
+}
 
+//js for page number 4
+//finding an existing group in the local storage
+btn[6].addEventListener('click', ()=>{
+    groupName=placeholder[4].value;
+    let length=localStorage.length;
+    for(let i=0; i<length; i++){
+        let key=localStorage.key(i);
+        let currKEY=localStorage.key(i);
+        if(`${groupName}_currency`===currKEY){
+            currency=localStorage.getItem(currKEY);
+        }
+        if(groupName===key){
+            names=JSON.parse(localStorage.getItem(key));
+            number=names.length;
+            createChecklist();
+            
+            placeholder[4].style.backgroundColor='transparent';
+            pages[3].style.display='none';
+            pages[5].style.display='block';
+            break;
+        }
+        else{
+            placeholder[4].style.backgroundColor='#4E070799';
+        }
+    }
+});
+
+//creating a new group for splitting up the expenses
+btn[7].addEventListener('click', ()=>{
+    if(placeholder[5].value!==""){
+        placeholder[5].style.backgroundColor='transparent';
+        groupName=placeholder[5].value;
+        pages[3].style.display='none';
+        pages[4].style.display='block';
+
+    let grName=document.querySelector('#grdetails');
+    grName.textContent=`Enter the details for ${groupName}`;
+    }
+    else{
+        placeholder[5].style.backgroundColor='#4E070799';
+    }
+});
+
+//button to go back to the previous page
+btn[8].addEventListener('click', ()=>{
+    for(let i=0; i<4; i++){
+        placeholder[i].value="";
+    }
+    groupName='group';
+    pages[3].style.display='none';
+    pages[2].style.display='block';
+});
+//end
+
+//procuring elements for the bills 
+const bills=document.querySelector('.bill');
+let checklistDiv=document.getElementById("checklist");
+
+//js for grp details page number 5
+//entering the value for currency
+btn[9].addEventListener('click', ()=>{
+    currency=placeholder[6].value;
+    number=placeholder[7].value;
+});
+
+let k=0;  
+//creating a new array by adding using this button
+btn[10].addEventListener('click', ()=>{
+    names[k]=placeholder[8].value;
+    placeholder[8].value="";
+    k++;
+});
+
+//creating a checklist from the new array generated
+btn[11].addEventListener('click', ()=>{
+   if(addToLocalStorage){
+     localStorage.setItem(groupName, JSON.stringify(names));
+   }
+    localStorage.setItem(`${groupName}_currency`, currency);
+    createChecklist();
     pages[4].style.display='none';
     pages[5].style.display='block';
 });
 
+//back button for two cases- demo and logged in 
+btn[12].addEventListener('click', ()=>{
+    names=[];
+    number=0;
+    pages[4].style.display='none';
+    if(addToLocalStorage){
+        pages[3].style.display='block';
+    }
+    else{
+        pages[1].style.display='block';
+    }
+});
 //end
 
+//creating variables for recording the data related each expense
 let l=0;
 let reason=[];
 let amount=[]; 
@@ -221,13 +307,14 @@ let contributors=[];
 let noOfPeople=[];
 let billNumber=1;
 let netPaid=[];
+let expenses=[];
 
 //js for bills i.e, page number 6
-
-btn[8].addEventListener('click', ()=>{
-    reason[l]=placeholder[6].value;
-    amount[l]=Number(placeholder[7].value);
-    paidBy[l]=placeholder[8].value;
+//recording details from each bill by confirm above bill
+btn[13].addEventListener('click', ()=>{
+    reason[l]=placeholder[9].value;
+    amount[l]=Number(placeholder[10].value);
+    paidBy[l]=placeholder[11].value;
 
     let checkedBoxes=document.querySelectorAll('input.boxes:checked');
     noOfPeople[l]=Number(checkedBoxes.length);
@@ -242,13 +329,15 @@ btn[8].addEventListener('click', ()=>{
     billNumber++;    
 });
 
+//access billHead for changing the bill number
 let billHead=document.querySelector('#billHead');
 
-btn[9].addEventListener('click', ()=>{
+//setting value of each input back to zero for a new bill
+btn[14].addEventListener('click', ()=>{
     billHead.textContent=`BILL ${billNumber}`;
-    placeholder[6].value='';
-    placeholder[7].value='';
-    placeholder[8].value='';
+    placeholder[9].value='';
+    placeholder[10].value='';
+    placeholder[11].value='';
 
     let allBoxes=document.querySelectorAll('input.boxes');
     for(let a=0; a<number; a++){
@@ -256,9 +345,12 @@ btn[9].addEventListener('click', ()=>{
     }
 });
 
+//accessing the viewbill page
 let viewBill=document.querySelector('#viewbill');
 let startBillno=1;
-btn[10].addEventListener('click', ()=>{
+
+//creating elements for displaying the bill on the next page
+btn[15].addEventListener('click', ()=>{
     pages[5].style.display='none';
     pages[6].style.display='block';
 
@@ -278,7 +370,7 @@ btn[10].addEventListener('click', ()=>{
 
         let amtPaid=document.createElement('h2');
         amtPaid.className='whiteHead';
-        amtPaid.textContent=`Amount Paid: ${amount[b-1]}`;
+        amtPaid.textContent=`Amount Paid: ${amount[b-1] }${currency}`;
         receipt.appendChild(amtPaid);
 
         let payer=document.createElement('h2');
@@ -305,6 +397,7 @@ btn[10].addEventListener('click', ()=>{
     startBillno=billNumber;
 });
 
+//created the fnction to get settlement for the added bills
 function getSettlement(){
     for(let i=0; i<number; i++){
         expenses[i]=0;
@@ -325,18 +418,21 @@ function getSettlement(){
     }
 }
 
+//access the table to edit the elements
 let tableBody=document.getElementById('tableBody');
 
 //js for page number 7 viewbills page
-btn[11].addEventListener('click', ()=>{
+//going to the settlements page 
+btn[16].addEventListener('click', ()=>{
     getSettlement();
     pages[6].style.display='none';
     pages[7].style.display='block';
+//inner html is set like this every time so that elements won't repeat after any addition or deletion
     tableBody.innerHTML=`<tr>
                         <th>NAME</th>
                         <th>STATUS</th>
-                        <th>BALANCES</th>
-                        <th>NET PAID</th>
+                        <th>BALANCES IN ${currency}</th>
+                        <th>NET PAID IN ${currency}</th>
                     </tr>`;
     for(let c=0; c<number; c++){
         let status='clear';
@@ -359,13 +455,46 @@ btn[11].addEventListener('click', ()=>{
     }
 });
 
-btn[12].addEventListener('click', ()=>{
+//going back to the previous page to add a bill
+btn[17].addEventListener('click', ()=>{
     pages[6].style.display='none';
     pages[5].style.display='block';
 });
 
 //js for page number 8 settlement window
-btn[13].addEventListener('click', ()=>{
+//going back to the previous window to delete a certain bill or go back further
+btn[18].addEventListener('click', ()=>{
     pages[7].style.display='none';
     pages[6].style.display='block';
+});
+
+//js for page number nine that is the login page if the user is already signed up in the website
+//ideally this page should present uupwards but thought about it later so didn't change the order
+btn[19].addEventListener('click', ()=>{
+    userName=placeholder[12].value;
+    passWord=placeholder[13].value;
+
+//check if the correct password is entered or not?    
+    let length=localStorage.length;
+    for(let i=0; i<length; i++){
+        let key=localStorage.key(i);
+        if(key===userName && localStorage.getItem(key)===passWord){
+            placeholder[12].style.backgroundColor='transparent';
+            placeholder[13].style.backgroundColor='transparent';
+            personGreeting();
+            pages[8].style.display='none';
+            pages[3].style.display='block';
+            break;
+        }
+        else{
+            placeholder[12].style.backgroundColor='#4E070799';
+            placeholder[13].style.backgroundColor='#4E070799';
+        }
+    }
+});
+
+//go back to the sign up window
+btn[20].addEventListener('click', ()=>{
+    pages[8].style.display='none';
+    pages[2].style.display='block';
 });
