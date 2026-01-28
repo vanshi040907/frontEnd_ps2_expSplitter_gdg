@@ -12,6 +12,7 @@ It includes developing a an expense splitter that can perform the following basi
        Net balance (how much each person owes or is owed)<br>
 4. Display a clear summary of settlements.
 5. Persist all data using localStorage so that data is not lost on refresh.<br><br>
+6. Responsive- suitable for all screen sizes.
 Starting with the details, first I have created the page where the features of the website are shown using a slider and then from there the user will get the option to get the demo or sign up.<br>
 <img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/07c9ee6f-6bf4-46cf-be9f-67c2f6f84fe2" /><BR>
 ![demo](https://github.com/user-attachments/assets/9aaf433a-a773-4455-80f1-2310e010cec6)
