@@ -265,13 +265,37 @@ btn[9].addEventListener('click', ()=>{
     number=placeholder[7].value;
 });
 
+//function to create the list of names in the array
+function createList(){
+let nameList = document.getElementById('nameList');
+nameList.innerHTML="";
+let l=names.length;
+for(let i=0; i<l; i++){
+    const li= document.createElement('li');
+    li.innerHTML=`
+    ${names[i]} <button class="list" onclick="deleteItem(${i})"><i class="fa-solid fa-x"></i></button>`;
+    nameList.appendChild(li);
+}
+}
+
+//fnction to delete the a name in the array
+function deleteItem(i){
+    names.splice(i, 1);
+    createList();
+    k--;
+}
+
 let k=0;  
 //creating a new array by adding using this button
 btn[10].addEventListener('click', ()=>{
    if(k<number){
-     names[k]=placeholder[8].value;
+     let value=placeholder[8].value.trim();
+     if(value!==""){
+        names.push(value);
+        createList();
+        k++;
+     }
     placeholder[8].value="";
-    k++;
    }
 });
 

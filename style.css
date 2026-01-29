@@ -284,6 +284,12 @@
     min-height: 100vh;
 }
 
+.list{
+    color:red;
+    background-color: transparent;
+    border-color: transparent;
+}
+
 .detailEntry{
     backdrop-filter: blur(10px);
     width: min(500px, 90vw);
